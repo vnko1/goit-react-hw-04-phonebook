@@ -4,7 +4,7 @@ import { STORAGE_KEY } from './services/constants';
 import { load, save } from './services/localStorage';
 
 export const App = () => {
-  const [contacts, setContacts] = useState(load(STORAGE_KEY) ?? []);
+  const [contacts, setContacts] = useState(() => load(STORAGE_KEY) ?? []);
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
