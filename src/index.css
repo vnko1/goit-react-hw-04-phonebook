@@ -1,5 +1,11 @@
 @import-normalize; /* bring in normalize.css styles */
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -7,9 +13,37 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: teal;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1 {
+  margin-bottom: 8px;
+  font-weight: 900;
+  font-size: 24px;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 4px;
+  font-weight: 700;
+  font-size: 16px;
+  text-align: center;
+}
+
+ul,
+li,
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  width: 320px;
+  margin: 0 auto;
+  padding: 20px 10px;
 }
