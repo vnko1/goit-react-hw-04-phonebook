@@ -8,13 +8,11 @@ export const App = () => {
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
-    console.log(load(STORAGE_KEY));
-    setContacts([...load(STORAGE_KEY)]);
-    // setContacts(load(STORAGE_KEY));
+    setContacts(load(STORAGE_KEY));
   }, []);
 
   useEffect(() => {
-    save(STORAGE_KEY, contacts);
+    if (contacts.length) save(STORAGE_KEY, contacts);
   }, [contacts]);
 
   const onSubmitData = obj => {
