@@ -7,11 +7,6 @@ export const App = () => {
   const [contacts, setContacts] = useState(load(STORAGE_KEY) || []);
   const [filter, setFilter] = useState('');
 
-  // useEffect(() => {
-  //   console.log('mount');
-  //   setContacts(load(STORAGE_KEY));
-  // }, []);
-
   useEffect(() => {
     save(STORAGE_KEY, contacts);
   }, [contacts]);
@@ -25,14 +20,12 @@ export const App = () => {
     setFilter(value);
   };
 
-  const filterContacts = () => {
-    const normalizedFilter = filter.toLowerCase();
-    return contacts.filter(
+  const filterContacts = () =>
+    contacts.filter(
       contact =>
-        contact.number.toLowerCase().includes(normalizedFilter) ||
-        contact.name.toLowerCase().includes(normalizedFilter)
+        contact.number.toLowerCase().includes(filter.toLowerCase()) ||
+        contact.name.toLowerCase().includes(filter.toLowerCase())
     );
-  };
 
   const deleteContacts = id => {
     setContacts(prevState => prevState.filter(contact => contact.id !== id));
