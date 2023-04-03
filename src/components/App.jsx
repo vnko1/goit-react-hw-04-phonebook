@@ -4,15 +4,16 @@ import { STORAGE_KEY } from './services/constants';
 import { load, save } from './services/localStorage';
 
 export const App = () => {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState(load(STORAGE_KEY) || []);
   const [filter, setFilter] = useState('');
 
-  useEffect(() => {
-    setContacts(load(STORAGE_KEY));
-  }, []);
+  // useEffect(() => {
+  //   console.log('mount');
+  //   setContacts(load(STORAGE_KEY));
+  // }, []);
 
   useEffect(() => {
-    if (contacts.length) save(STORAGE_KEY, contacts);
+    save(STORAGE_KEY, contacts);
   }, [contacts]);
 
   const onSubmitData = obj => {
