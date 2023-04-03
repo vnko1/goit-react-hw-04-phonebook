@@ -16,7 +16,7 @@ export const App = () => {
   }, [contacts]);
 
   const onSubmitData = obj => {
-    setContacts([...contacts, obj]);
+    setContacts(prevState => [...prevState, obj]);
   };
 
   const onHandleChange = e => {
@@ -25,30 +25,16 @@ export const App = () => {
   };
 
   const filterContacts = () => {
-    // const reg = /[\s\d]/;
-
     const normalizedFilter = filter.toLowerCase();
     return contacts.filter(
       contact =>
         contact.number.toLowerCase().includes(normalizedFilter) ||
         contact.name.toLowerCase().includes(normalizedFilter)
     );
-    // if (reg.test(filter)) {
-    //   return contacts.filter(
-    //     contact =>
-    //       contact.number.toLowerCase().includes(normalizedFilter) ||
-    //       contact.name.toLowerCase().includes(normalizedFilter)
-    //   );
-    // } else {
-    //   return contacts.filter(contact =>
-    //     contact.name.toLowerCase().includes(normalizedFilter)
-    //   );
-    // }
   };
 
   const deleteContacts = id => {
-    const filtredContacts = contacts.filter(contact => contact.id !== id);
-    setContacts(filtredContacts);
+    setContacts(prevState => prevState.filter(contact => contact.id !== id));
   };
 
   return (
